@@ -4,20 +4,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]
-    private InputField inputField;
-    [SerializeField]
-    private TextMeshProUGUI text;
+    [SerializeField] InputField inputField;
+    [SerializeField] TextMeshProUGUI text;
 
-    private void Awake()
+    void Awake()
     {
         text.gameObject.SetActive(false);
     }
-
-    public void SetText()
+    
+    public void ShowText()
     {
-        if(!text.gameObject.activeSelf) text.gameObject.SetActive(true);
-
         text.text = inputField.text;
+        if (!text.gameObject.activeSelf) text.gameObject.SetActive(true);
     }
 }
