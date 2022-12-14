@@ -3,7 +3,7 @@ using UnityEngine;
 public class HelloMethoden : MonoBehaviour
 {
     //2) Instanzvariable nutzen
-    private int startValue = 0;
+    private int startValue2 = 0;
 
     //3) Der Wert, der dazugezählt wird, ist bei der Deklaration noch nicht bekannt
     //z.B. Random oder User Input
@@ -15,52 +15,44 @@ public class HelloMethoden : MonoBehaviour
     //5) Return
     private int startValue5 = 0;
 
+    private readonly string startMsg = "before startValue: ";
+    private readonly string endMsg = "after startValue: ";
 
     void Start()
     {
         //1) Verwende Start Methode
-        Debug.Log("Hallo Methoden");
+        Debug.Log("HelloMethoden script initialized");
 
         //at 2)
-        Debug.Log("before startValue: " + startValue);
-        IncrementByOne();
-        Debug.Log("after startValue: " + startValue);
+        LogValMsg(startMsg, "startValue2", startValue2);
+        startValue2++;
+        LogValMsg(endMsg, "startValue2", startValue2);
 
         //at 3)
-        Debug.Log("before startValue3: " + startValue);
-        IncrementBy(Random.Range(1, 10));
-        Debug.Log("after startValue3: " + startValue);
+        LogValMsg(startMsg, "startValue3", startValue3);
+        startValue3 += Random.Range(1, 10);
+        LogValMsg(endMsg, "startValue3", startValue3);
 
         //at 4)
-        Debug.Log("before startValue4: " + startValue4);
-        DecrementByOne(startValue4);
-        Debug.Log("after startValue4: " + startValue4);
+        LogValMsg(startMsg, "startValue4", startValue4);
+        OutputDecrementedValue(startValue4);
+        LogValMsg(endMsg, "startValue4", startValue4);
 
         //at 5)
-        Debug.Log("before startValue5: " + startValue5);
-        startValue5 = DecrementByX(startValue5, 2);
-        Debug.Log("after  startValue5: " + startValue5);
+        LogValMsg(startMsg, "startValue5", startValue5);
+        startValue5 = startValue5 - 2;
+        LogValMsg(endMsg, "startValue5", startValue5);
     }
 
-    //5) incl. return value
-    private int DecrementByX (int start, int valToSub)
-    {
-        return start - valToSub;
-    }
-
-    private void DecrementByOne(int val)
+    //4)
+    private void OutputDecrementedValue(int val)
     {
         val--;
         Debug.Log("val: " + val);
     }
 
-    private void IncrementBy(int valToAdd)
+   private void LogValMsg(string msg, string name, int val)
     {
-        startValue3 += Mathf.Abs(valToAdd);
-    }
-
-    private void IncrementByOne()
-    {
-        startValue++;
+        Debug.Log(msg + name + " = " + val);
     }
 }
