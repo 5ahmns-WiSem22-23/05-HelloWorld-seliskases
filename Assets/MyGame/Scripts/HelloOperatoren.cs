@@ -26,6 +26,5 @@ public class HelloOperatoren : MonoBehaviour
 
         myBool = false;
         Debug.Log("After myBool = false: " + myBool);
-
     }
 }
